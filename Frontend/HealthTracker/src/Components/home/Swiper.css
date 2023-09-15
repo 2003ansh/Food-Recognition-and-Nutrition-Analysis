@@ -1,6 +1,6 @@
 .swiper {
     width: 100%;
-    height: 60%;
+    height: 100%;
     padding: 0px;
     /* position: absolute; */
   }
@@ -19,7 +19,7 @@
   @media (max-width: 600px) {
     .swiper {
       width: 100%;
-      height: 35%;
+      height: 100%;
       padding: 0px;
       /* position: absolute; */
     }
