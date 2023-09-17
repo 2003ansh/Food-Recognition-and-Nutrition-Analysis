@@ -91,7 +91,7 @@ fetch(url1, options)
   return (
     <>
     <div className="section">
-    {props.login ? <p>Already logged in--
+    {props.login ? <p >Already logged in--
       {props.token}</p> :<div className="container">
       <div className="row full-height justify-content-center">
         <div className="col-12 text-center align-self-center py-5">

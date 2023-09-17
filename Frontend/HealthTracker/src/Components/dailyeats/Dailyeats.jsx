@@ -44,27 +44,32 @@ export default function Dailyeats(props) {
     <>
       <Container fluid>
         <Card >
-          <Card.Body className='py-2'>{props.login ? 'For ' : 'byy'}</Card.Body>
+          <Card.Body className='py-2'>{props.login ? 'DailyIntake foods along with Calories are mentioned below: ' : 'Please Login to know about daily Eating habits'}</Card.Body>
         </Card>
         <br />
         {props.login ? (
           <>
             <Row>
             {spinner ? (
-              <Spinner animation="border" size="sm" role="status" className='p-5'>
+              <Col className="d-flex justify-content-center" style={{height:"100vh"}}>
+                <Spinner animation="border"style={{fontSize:"5rem",color:`${props.mode==="dark"?"white":"black"}`}} size="sm" role="status" className='p-5'>
                 <span className="sr-only" style={props.mode==="dark"?{color:"white",fontSize:"1.2rem"}:{color:"black",fontSize:"1.2rem"}}>Loading...</span>
               </Spinner>
+              </Col>
             ) : (
               response.map((foodItem, index) => (
                 <Col key={index} sm={12} md={6} lg={4} xl={3}>
                 <Card  style={{ width: '18rem' }}>
                   <Card.Img variant="top" src={foodItem.Photo} />
                   <Card.Body>
-                    <Card.Text>Food Name:{foodItem.Foodname}</Card.Text>
-                    <Card.Text>Food Calorie:{foodItem.Calorie}</Card.Text>
+                    <Card.Text style={{fontWeight:"700"}}>Food Name: {foodItem.Foodname}</Card.Text>
+                    <Card.Text style={{fontWeight:"700"}}>Food Calorie:{foodItem.Calorie}</Card.Text>
+                    <Card.Text style={{fontWeight:"700"}}>Food Date:{foodItem.Date}</Card.Text>
                   </Card.Body>
                 </Card>
+                <br />
                 </Col>
+                
               ))
             )
             }</Row>

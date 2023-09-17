@@ -30,6 +30,7 @@ function ImageUploader(props) {
       });
 
       if (response.ok) {
+        alert('Image upload successful');
         const data = await response.json();
         console.log('Image upload successful:', data);
         const { 'Calories': Calories, 'Food Item': foodItem } = data.document;
@@ -106,31 +107,33 @@ function ImageUploader(props) {
       </Card.Body>
       <Card.Img  src={selectedImage ? URL.createObjectURL(selectedImage) : null} />
       </Card>
-      <Card
-          style={{
-            width: '19rem',
-            border: 'none',
-            backgroundColor: 'transparent',
-            display: 'flex',
-            rowGap: '10px',
-          }}
-        >
-          <Card.Subtitle style={{color:`${props.mode==="dark"?"white":"black"}`}}>
-            Food Name :
-            {foodname === null ? <Spinner size="sm"></Spinner> : foodname}
-          </Card.Subtitle>
-          <Card.Subtitle style={{color:`${props.mode==="dark"?"white":"black"}`}}>
-            Calorie Value :{' '}
-            {calorieval === null ? <Spinner size="sm"></Spinner> : calorieval}
-          </Card.Subtitle>
-          {props.token?
-          <Button className="btn btn-success" onClick={save}>
-          Save
-          </Button>:<Button className="btn btn-success" >
-          <Link to={"/login"} style={{textDecoration:"none",color:"inherit"}}>Login to save</Link>
-          </Button>
+      
+       {selectedImage?<Card
+        style={{
+          width: '19rem',
+          border: 'none',
+          backgroundColor: 'transparent',
+          display: 'flex',
+          rowGap: '10px',
+        }}
+      >
+        <Card.Subtitle style={{color:`${props.mode==="dark"?"white":"black"}`}}>
+          Food Name :
+          {foodname === null ? <Spinner size="sm"></Spinner> : foodname}
+        </Card.Subtitle>
+        <Card.Subtitle style={{color:`${props.mode==="dark"?"white":"black"}`}}>
+          Calorie Value :{' '}
+          {calorieval === null ? <Spinner size="sm"></Spinner> : calorieval}
+        </Card.Subtitle>
+        {props.token?
+        <Button className="btn btn-success" onClick={save}>
+        Save
+        </Button>:<Button className="btn btn-success" >
+        <Link to={"/login"} style={{textDecoration:"none",color:"inherit"}}>Login to save</Link>
+        </Button>
 }
-        </Card>
+      </Card>:null
+      }
       
     </>
   );
